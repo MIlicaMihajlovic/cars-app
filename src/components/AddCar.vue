@@ -57,7 +57,8 @@
                 <input v-model="newCar.numberOfDoors" type="number" class="form-control" placeholder="Number of doors">
             </div>
             <button type="submit">Add car</button>
-            <button @click.stop.prevent="reset">Reset</button>
+            <button @click="reset">Reset</button>
+            <button @click="preview">Preview</button>
         </form>       
     </div>
 </template>
@@ -93,6 +94,13 @@ export default {
 
         reset() {
             this.newCar = {};
+        },
+
+        preview() {
+            let stringifyObject = JSON.stringify(this.newCar);
+            let parseObject = JSON.parse(stringifyObject);
+
+            return alert(`Brand: ${parseObject.brand}\n Model: ${parseObject.model}\n Year: ${parseObject.year}\n Max speed: ${parseObject.maxSpeed}\n ${parseObject.isAutomatic ? Automatic : 'Manual'}\n Engine: ${parseObject.engine}\n Number of doors: ${parseObject.numberOfDoors}`)
         }
     }
 }
