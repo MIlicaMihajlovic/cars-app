@@ -3,15 +3,15 @@
         <form @submit.prevent="addCar">
             <div class="form-group">
                 <label>Brand</label>
-                <input v-model="newCar.brand" type="text" class="form-control" placeholder="Brand">
+                <input v-model="newCar.brand" type="text" class="form-control" placeholder="Brand" required>
             </div>
             <div class="form-group">
                 <label>Model</label>
-                <input v-model="newCar.model" type="text" class="form-control" placeholder="Model">
+                <input v-model="newCar.model" type="text" class="form-control" placeholder="Model" required>
             </div>
             <div class="form-group">
                 <label>Select year</label>
-                <select v-model="newCar.year" class="form-control">
+                <select v-model="newCar.year" class="form-control" required>
                 <!-- <option selected>Choose</option> -->
                 <option v-for="(year, index) in years" :value="year" :key="index">{{year}}</option>
                 </select>
@@ -29,32 +29,32 @@
                 <label>Engine</label>
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input v-model="newCar.engine" value="Diesel" type="radio" aria-label="Radio button for following text input">
+                        <input v-model="newCar.engine" value="Diesel" type="radio" aria-label="Radio button for following text input" required>
                         Diesel
                     </div>
                     </div>
                     <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input v-model="newCar.engine" value="Petrol" type="radio" aria-label="Radio button for following text input">
+                        <input v-model="newCar.engine" value="Petrol" type="radio" aria-label="Radio button for following text input" required>
                         Petrol
                     </div>
                     </div>
                     <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input v-model="newCar.engine" value="Electric" type="radio" aria-label="Radio button for following text input">
+                        <input v-model="newCar.engine" value="Electric" type="radio" aria-label="Radio button for following text input" required>
                         Electric
                     </div>
                     </div>
                     <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input v-model="newCar.engine" value="Hybrid" type="radio" aria-label="Radio button for following text input">
+                        <input v-model="newCar.engine" value="Hybrid" type="radio" aria-label="Radio button for following text input" required>
                         Hybrid
                     </div>
                     </div>
             </div>
             <div class="form-group">
                 <label>Number of doors</label>
-                <input v-model="newCar.numberOfDoors" type="number" class="form-control" placeholder="Number of doors">
+                <input v-model="newCar.numberOfDoors" type="number" class="form-control" placeholder="Number of doors" required>
             </div>
             <button type="submit">Add car</button>
             <button @click="reset">Reset</button>
@@ -76,6 +76,8 @@ export default {
             years: Array(30).fill(1990).map((n, index) => n + index),
 
             newCar: {
+                brand: '',
+                model: '',
                 isAutomatic: false
             },
 
