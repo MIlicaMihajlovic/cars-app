@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="">
+        <form @submit.prevent="addCar">
             <div class="form-group">
                 <label>Brand</label>
                 <input v-model="newCar.brand" type="text" class="form-control" placeholder="Brand">
@@ -24,13 +24,33 @@
                 <input v-model="newCar.isAutomatic" type="checkbox" class="form-check-input">
                 <label class="form-check-label" for="exampleCheck1">Is automatic</label>
             </div>
+            
             <div class="input-group">
+                <label>Engine</label>
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="radio" aria-label="Radio button for following text input">
+                        <input v-model="newCar.engine" value="Diesel" type="radio" aria-label="Radio button for following text input">
+                        Diesel
                     </div>
                     </div>
-                    <input type="text" class="form-control" aria-label="Text input with radio button">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input v-model="newCar.engine" value="Petrol" type="radio" aria-label="Radio button for following text input">
+                        Petrol
+                    </div>
+                    </div>
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input v-model="newCar.engine" value="Electric" type="radio" aria-label="Radio button for following text input">
+                        Electric
+                    </div>
+                    </div>
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input v-model="newCar.engine" value="Hybrid" type="radio" aria-label="Radio button for following text input">
+                        Hybrid
+                    </div>
+                    </div>
             </div>
             <div class="form-group">
                 <label>Number of doors</label>
@@ -45,6 +65,9 @@
 
 
 <script>
+
+import { cars } from '../service/cars.js'
+
 export default {
     data() {
         return {
@@ -53,10 +76,22 @@ export default {
             newCar: {
                 isAutomatic: false
             },
+
+            //engines: ['diesel', 'petrol', 'electric', 'hybrid']
+        }
+    },
+
+    methods: {
+        addCar() {
+            cars.add(this.newCar)
+             .then(() => {
+                 this.$router.push({path: '/cars'});
+                 this.newCar = {};
+             })
         }
     }
 }
 
-//`diesel`, `petrol`, `electric`, `hybrid`
+
 </script>
 

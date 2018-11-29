@@ -6,6 +6,12 @@ import AddCar from './components/AddCar.vue'
 
 Vue.config.productionTip = false
 
+Vue.filter('capitalize', function (value) {  
+  if(!value) return '';
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+})
+
 Vue.use(VueRouter);
 
 const routes = [
