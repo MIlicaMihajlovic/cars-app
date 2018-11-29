@@ -57,6 +57,7 @@
                 <input v-model="newCar.numberOfDoors" type="number" class="form-control" placeholder="Number of doors">
             </div>
             <button type="submit">Add car</button>
+            <button @click.stop.prevent="reset">Reset</button>
         </form>       
     </div>
 </template>
@@ -88,6 +89,10 @@ export default {
                  this.$router.push({path: '/cars'});
                  this.newCar = {};
              })
+        },
+
+        reset() {
+            this.newCar = {};
         }
     }
 }
